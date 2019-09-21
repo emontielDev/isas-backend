@@ -20,9 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             nombre: { allowNull: false, type: DataTypes.STRING(10) }
         }, {
-            createdAt: false,
-            freezeTableName: true,
-            updatedAt: false
+            freezeTableName: true
         }
     );
 

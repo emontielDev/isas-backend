@@ -22,7 +22,7 @@ var fs = require("fs"),
                     // timestamps: false
             },
             host: "localhost",
-            logging: false,
+            logging: true,
             timezone: "-05:00"
         }
     ),
@@ -44,7 +44,9 @@ var fs = require("fs"),
     };
 
 // Foreign Keys
-//db.Usuario.belongsTo(db.Familiar); // Will also add userId to Task model
+db.Grado.belongsTo(db.Nivel, { foreignKey: 'idNivel', foreignKeyConstraint: true });
+db.Grupo.belongsTo(db.CicloEscolar, { foreignKey: 'idCicloEscolar', foreignKeyConstraint: true });
+db.Grupo.belongsTo(db.Grado, { foreignKey: 'idGrado', foreignKeyConstraint: true });
 //db.Familiar.belongsTo(db.Usuario, { foreignKey: "idAlumno" }); // Will add userId to Task model
 //db.Familiar.Alumno = db.Familiar.hasMany(db.Usuario);
 // db.Modelo.belongsTo(db.Marca, { foreignKey: 'idmarca' });

@@ -10,11 +10,12 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 type: DataTypes.INTEGER
             },
-            evaluaciones: { allowNull: false, type: DataTypes.SMALLINT }
+            nombre: {
+                allowNull: false,
+                type: DataTypes.STRING(30)
+            }
         }, {
-            createdAt: false,
-            freezeTableName: true,
-            updatedAt: false
+            freezeTableName: true
         }
     );
 

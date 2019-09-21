@@ -6,9 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             fechaInicio: { allowNull: false, type: DataTypes.DATEONLY },
             fechaFin: { allowNull: false, type: DataTypes.DATEONLY }
         }, {
-            createdAt: false,
-            freezeTableName: true,
-            updatedAt: false
+            freezeTableName: true
         }
     );
 

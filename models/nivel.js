@@ -5,9 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             nombre: { allowNull: false, type: DataTypes.STRING(15), unique: true },
             evaluaciones: { allowNull: false, type: DataTypes.SMALLINT }
         }, {
-            createdAt: false,
-            freezeTableName: true,
-            updatedAt: false
+            freezeTableName: true
         }
     );
 

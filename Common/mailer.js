@@ -16,7 +16,7 @@ module.exports.enviarDatosAcceso = (nombre, correo, contrasenia) => {
             let mailOptions = {
                 from: '"Escuela ISAS - Sistema 🏫" <emontiel.argos@gmail.com>',
                 to: `"${nombre}" <${correo}>`,
-                subject: "Datos de acceso al sistema para alumnos 👦 👩 - ISAS 🎓 💼",
+                subject: `Hola ${nombre} Te enviamos los datos de acceso al sistema 👦 👩 - ISAS 🎓 💼`,
                 //text: "Hello world?",
                 html: `Correo electrónico: <b>${correo}</b><br>Su contraseña es: <b>${contrasenia}</b>` // html body
             };

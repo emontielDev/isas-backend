@@ -11,7 +11,7 @@ module.exports.NotFound = (response, mensaje) => {
 };
 
 module.exports.Exception = (response, e) => {
-    res.status(500).json({ errors: e });
+    response.status(500).send(e);
 };
 
 module.exports.Ok = (response, object) => {

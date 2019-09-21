@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var Sequelize = require("sequelize")
-// Db Context
+    // Db Context
 var db = require("../models/context");
 
 // Common
@@ -12,10 +12,14 @@ const datatable = require("sequelize-datatables");
 // Obtener todos los ciclo escolares
 app.get("/", (req, res) => {
     try {
-        db.CicloEscolar.findAll({order: [['id', 'DESC']]})
-        .then(entities => {
-            return response.Ok(res, entities);
-        });
+        db.CicloEscolar.findAll({
+                order: [
+                    ['id', 'DESC']
+                ]
+            })
+            .then(entities => {
+                return response.Ok(res, entities);
+            });
     } catch (e) {
         return response.Exception(res, e);
     }
@@ -26,18 +30,18 @@ app.post("/", (req, res) => {
     var body = req.body;
     try {
         db.CicloEscolar.count({
-            where: { nombre: body.nombre }
-        })
-        .then(c=> {
-            if (c > 0) {
-                return response.BadRequest(res, { mensaje: 'Ya existe un ciclo escolar registrada con la información proporcionada.'})
-            }
+                where: { nombre: body.nombre }
+            })
+            .then(c => {
+                if (c > 0) {
+                    return response.BadRequest(res, { mensaje: 'Ya existe un ciclo escolar registrado con la información proporcionada.' })
+                }
 
-            db.CicloEscolar.create({nombre: body.nombre, fechaInicio: body.fechainicio, fechaFin: body.fechafin})
-            .then(entity => {
-                return response.Created(res, entity.dataValues);
+                db.CicloEscolar.create({ nombre: body.nombre, fechaInicio: body.fechainicio, fechaFin: body.fechafin })
+                    .then(entity => {
+                        return response.Created(res, entity.dataValues);
+                    });
             });
-        });
     } catch (e) {
         return response.Exception(res, e);
     }
@@ -50,21 +54,21 @@ app.put('/:id', (req, res) => {
 
     try {
         db.CicloEscolar.findOne({ where: { id: id } })
-        .then(entity => {
-            if (!entity) {
-                return response.NotFound(res, 'El ciclo escolar no existe, es posible que se haya sido eliminado del sistema.');
-            }
+            .then(entity => {
+                if (!entity) {
+                    return response.NotFound(res, 'El ciclo escolar no existe, es posible que se haya sido eliminado del sistema.');
+                }
 
-            entity.update({
-                nombre: body.nombre,
-                fechaInicio: body.fechainicio,
-                fechaFin: body.fechafin
-            })
-            .then(flag => {
-                return response.Ok(res, flag);
+                entity.update({
+                        nombre: body.nombre,
+                        fechaInicio: body.fechainicio,
+                        fechaFin: body.fechafin
+                    })
+                    .then(flag => {
+                        return response.Ok(res, flag);
+                    });
+
             });
-
-        });
     } catch (e) {
         return response.Exception(res, e);
     }
