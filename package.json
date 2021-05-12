@@ -21,7 +21,7 @@
         "moment": "^2.24.0",
         "mysql2": "^1.6.5",
         "node-json2html": "^1.2.0",
-        "nodemailer": "^6.3.0",
+        "nodemailer": "^6.4.16",
         "sequelize": "^5.13.0",
         "sequelize-datatables": "^1.2.1",
         "uuid": "^3.3.3"
